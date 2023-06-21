@@ -1,0 +1,17 @@
+#!/bin/bash
+
+if [ $# -eq 0 ]; then
+    echo "Usage: prevent_sleep program_name"
+    echo "Example:"
+    echo " prevent_sleep wget"
+    exit 1
+fi
+
+while true; do
+    pid=$(pgrep $1)
+    if [ -n "$pid" ]; then
+        caffeinate -w $pid > /dev/null &
+        killall caffeinate
+        break
+    fi
+done
