@@ -1,0 +1,11 @@
+./cat_apt.sh
+./cat_file.sh
+./compress.sh
+./copy.sh
+./cut_novle.sh
+./get_log.sh
+./hmi_log.sh
+./new_sync.sh
+./output.txt
+./setproxy.sh
+./test.sh

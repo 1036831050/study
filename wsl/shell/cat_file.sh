@@ -1,4 +1,5 @@
 #!/usr/bin/bash
+# 作用是遍历指定目录下的所有文件，将每个文件的完整路径写入到指定目录下的 output.txt 文件中
 
 while :
 do
