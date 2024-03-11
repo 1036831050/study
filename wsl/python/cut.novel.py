@@ -27,10 +27,12 @@ def split_novel(file_path):
         os.mkdir(target_dir)
     
     # 正则表达式匹配章节标题
-    section_pattern = re.compile(r'第.+章.*')
-    sec_count = 0  # 章节计数
+    section_pattern = re.compile(r'.*第.{1,3}章(?![\u4e00-\u9fa5]).*')
+    sec_count = 0  # 章节计数F:\AndriodBackup\resiliosync\novel\《熟女之殇》、《母爱的光辉》.txt
     sec_cache = []  # 存放当前章节内容
     title_cache = []  # 存放所有章节标题，用于生成目录文件
+    # section_pattern = re.compile(r'.*第.+章.*')
+
     
     # 读取原小说内容，按章节分割并保存到新文件中
     with open(file_path, 'r', encoding=file_encoding,errors='replace') as input_file:

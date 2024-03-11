@@ -9,7 +9,7 @@ function compre(){
     # 提取文件名和路径
     name=${file##*/}
     path=${file%/*}
-    echo $name $path
+    echo "$name $path"
     # 压缩文件或目录为 tar.gz 格式
     tar -cvzPf  ${file}.tar.gz ${file}
 }
