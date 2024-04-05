@@ -2,6 +2,10 @@ import os
 import shutil
 from tqdm import tqdm
 
+
+'''复制源目录下的所有文件，转移到目标目录并显示进度条'''
+
+
 def copy_files(source_dir, destination_dir):
     # 获取源目录下的所有文件列表
     files = []
