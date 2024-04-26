@@ -2,6 +2,8 @@ import re
 import os
 import sys
  
+
+# 作用是将txt格式的小说文件，按照章节切分成单独的txt文件，并生成目录文件。
 # txt book's path.
 novel_name='' #小说名字
 source_path = input("请输入小说的绝对路径：")

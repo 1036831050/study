@@ -31,12 +31,13 @@ for i in range(0, count):
 # else:
 #     count = int(count)
 
-
-def is_chinese(word):  # 判断是否为中文
+# 判断是否为中文
+def is_chinese(word):
     for ch in word:
-        if '\u4e00' <= ch <= '\u9fff':
+        if 0x4e00 <= ord(ch) <= 0x9fff:
             return True
     return False
+
 
 
 def get_text(path):

@@ -1,4 +1,0 @@
-..//python
-..//python
-..//setproxy.sh.bak
-..//shell
