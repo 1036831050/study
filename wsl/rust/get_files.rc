@@ -1,0 +1,49 @@
+use std::fs;
+use std::fs::File;
+use std::io::Write;
+
+fn list_files(path: &str, extension: &str, output_file: &str) {
+    let output = File::create(output_file).expect("Error creating output file");
+    let mut output = std::io::BufWriter::new(output);
+
+    if let Ok(entries) = fs::read_dir(path) {
+        for entry in entries {
+            if let Ok(entry) = entry {
+                let file_type = entry.file_type().expect("Error getting file type");
+
+                if file_type.is_dir() {
+                    let subpath = entry.path();
+                    if let Some(subpath_str) = subpath.to_str() {
+                        if subpath_str != "." && subpath_str != ".." {
+                            list_files(&subpath_str, extension, output_file);
+                        }
+                    }
+                } else if file_type.is_file() {
+                    if let Some(file_name) = entry.file_name().to_str() {
+                        if file_name.ends_with(extension) {
+                            writeln!(output, "{}/{}", path, file_name)
+                                .expect("Error writing to output file");
+                        }
+                    }
+                }
+            }
+        }
+    } else {
+        eprintln!("Error reading directory {}", path);
+    }
+}
+
+fn main() {
+    let args: Vec<String> = std::env::args().collect();
+
+    if args.len() < 3 || args.len() > 4 {
+        println!("Usage: {} <directory> <extension> [<output_file>]", args[0]);
+        std::process::exit(1);
+    }
+
+    let directory = &args[1];
+    let extension = &args[2];
+    let output_file = if args.len() == 4 { &args[3] } else { "output.txt" };
+
+    list_files(directory, extension, output_file);
+}
