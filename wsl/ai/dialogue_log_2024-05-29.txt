@@ -1,0 +1,2 @@
+2024-05-29 21:37:29,087 - DialogueSystem - INFO - PresentMon 是 Windows 的一个用于捕捉和分析应用程序的帧呈现时间的工具。
+2024-05-29 21:39:55,029 - DialogueSystem - INFO - 你好，有什么我可以帮你的吗？
