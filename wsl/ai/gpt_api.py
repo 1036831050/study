@@ -1,6 +1,7 @@
 import sys
 import requests
 from model import setup_logger
+import user_input
 
 
 def call_with_stream(prompt="Hello!", logger=None):
@@ -31,15 +32,16 @@ def main():
 
     while True:
         print("用户输入:")
-        lines = sys.stdin.read()  # 读取用户输入
+        lines = user_input.main()  # 读取用户输入
+        print("GPT:", end="")
         # lines = [line.strip() for line in lines]  # 去除每行前后空白    
         # user_input = custom_input().strip()  # 去除输入前后空白
         if lines.strip() in quit_commands:  # 不区分大小写
-            print("GPT:再见！期待再次为您服务。")
+            print("再见！期待再次为您服务。")
             break
+
         try:
             # 假设call_with_stream是处理用户输入的函数，这里调用它
-            print("GPT:", end="")
             call_with_stream(' '.join(lines))
         except Exception as e:  # 捕获并友好提示异常
             print(f"系统错误：{e}. 请尝试重新输入。")
