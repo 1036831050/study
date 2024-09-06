@@ -1,4 +1,4 @@
-import pyttsx3 # type: ignore
+import pyttsx3 
 import datetime
 import time
 

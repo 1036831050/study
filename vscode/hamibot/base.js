@@ -1,17 +1,5 @@
 auto.waitFor();
 
-//获取手机分辨率
-var x = device.width;//手机的屏幕宽
-var y = device.height;　
-//排除某些机型的x、y互换的情况
-var i = 0;
-if(x>2000)
-{
-  i = x;
-  x = y;
-  y = i;
-}
-
 // 输入密码
 function password_input()
 {
